@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传示例</title>
+</head>
+<body>
+    <h2>上传文件</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="fileInput">选择文件:</label>
+        <input type="file" id="fileInput" name="file" multiple><br><br>
+        <button type="button" onclick="uploadPicture()">上传</button>
+    </form>
+
+    <p id="status"></p>
+    <pre id="response"></pre>
+
+    <h2>下载文本文件</h2>
+    <button id="downloadFile">下载文本文件</button>
+
+    <script src="../script/upload.js"></script>
+    <script src="../script/download.js"></script>
+</body>
+</html>

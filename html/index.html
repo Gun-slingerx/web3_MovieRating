@@ -1,0 +1,23 @@
+<html>
+
+<body>
+    <button id="uploadButton">上传</button>
+    <button id="downloadButton">下载</button>
+
+    <script src="../script/upload.js"></script>
+    <script src="../script/download.js"></script>
+    <script>
+        document.getElementById('uploadButton').addEventListener('click', async () => {
+            await pinFileToIPFS();
+        });
+    </script>
+
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', async () => {
+            await fetchFileFromIPFS();
+        })
+    </script>
+
+</body>
+
+</html>
