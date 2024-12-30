@@ -68,4 +68,8 @@ contract Movie is ERC721, Ownable {
         delete _movieInfos[tokenId];
         _burn(tokenId);
     }
+
+    function test(string memory str) public pure returns(string memory){
+        return str;
+    }
 }
