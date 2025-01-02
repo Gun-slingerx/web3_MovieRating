@@ -14,9 +14,9 @@ contract deploy{
         Movie movie = new Movie();
         console.log("Contract Movie deployed at:", address(movie));
 
-        // 部署 User
-        User user = new User();
-        console.log("Contract User deployed at:", address(user));
+        // // 部署 User
+        // User user = new User();
+        // console.log("Contract User deployed at:", address(user));
     }
 }
 

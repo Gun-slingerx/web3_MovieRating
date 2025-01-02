@@ -72,4 +72,17 @@ contract Movie is ERC721, Ownable {
     function test(string memory str) public pure returns(string memory){
         return str;
     }
+
+    function checkMovieIdExist(uint256 tokenId) public view returns(bool){
+        return _keys.contains(tokenId);
+    }
+
+    // 获取_keys中的所有值
+    function getAllKeys() public view returns (uint256[] memory) {
+        uint256[] memory keysArray = new uint256[](_keys.length());
+        for (uint256 i = 0; i < _keys.length(); i++) {
+            keysArray[i] = _keys.at(i);
+        }
+        return keysArray;
+    }
 }

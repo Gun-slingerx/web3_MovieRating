@@ -2,8 +2,15 @@
 pragma solidity ^0.8.13;
 
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+import "./Movie.sol";
 
 contract User {
+    address private contractBAddress;
+
+    constructor(address _contractBAddress) {
+        contractBAddress = _contractBAddress;
+    }
+
     using EnumerableSet for EnumerableSet.UintSet;
 
     // 我的电影评分
@@ -16,8 +23,13 @@ contract User {
     mapping(address => EnumerableSet.UintSet) userMovieList;
 
     //打分 1~5
-    function doScore(uint256 movieId, uint8 rating) public check{
+    function doScore(uint256 movieId, uint8 rating) public check {
         require(rating >= 1 && rating <= 5, "Score must be between 1 and 5");
+        
+        bool exists = Movie(contractBAddress).checkMovieIdExist(movieId);
+        if(!exists){
+            revert("movieId does not exist");
+        }
 
         userScores[msg.sender][movieId] = rating;
         userMovieList[msg.sender].add(movieId);
@@ -36,5 +48,4 @@ contract User {
         _;
         userScoreCount[msg.sender][today]++;
     }
-    
 }

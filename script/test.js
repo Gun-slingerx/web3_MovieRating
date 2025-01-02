@@ -1,3 +1,3 @@
-function getTest2(){
+function getTest1(){
     console.log(".........");
 }   
