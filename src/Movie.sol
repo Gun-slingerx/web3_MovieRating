@@ -85,4 +85,9 @@ contract Movie is ERC721, Ownable {
         }
         return keysArray;
     }
+
+    // 获取_keys中的所有值
+    function getNextTokenId() public view returns (uint256) {
+        return _nextTokenId;
+    }
 }

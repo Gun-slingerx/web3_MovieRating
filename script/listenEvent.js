@@ -26,23 +26,20 @@ async function loadJsonFileABI(filePath) {
     }
 }
 
-const movieAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+const movieAddress = process.env.MOVIE_ADDRESS;
 const movieABI = await loadJsonFileABI('out/Movie.sol/Movie.json');
 
 const contract = new web3.eth.Contract(movieABI, movieAddress);
 
 async function listenMintEvent() {
-    contract.event.MovieMinted({
-        fromBlock: 'latest' // 从最新的区块开始监听
-    })
+    contract.events.MovieMinted()
     .on('data', (event) => {
         console.log("MovieAdded event detected:");
         console.log("Token ID:", event.returnValues.tokenId);
         console.log("to:", event.returnValues.to);
         console.log("name:", event.returnValues.name);
         console.log("date:", event.returnValues.date);
-    })
-    .on('error', console.error); // 错误处理
+    });
 }
 
 listenMintEvent();
